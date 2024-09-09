@@ -6,6 +6,7 @@ namespace MaintenanceExam.PageObjects
     public class TopNavPanel : BasePageLocal
     {
         private readonly By _middleMenuLocator = By.CssSelector("nav.navbar-dark ul.navbar-nav:not(.hidden-md-up):not(.navbar-right) > li");
+        private readonly By _productsAndServicesLocator = By.XPath("//a[text()='Products & Services']");
 
         public TopNavPanel(IWebDriver driver) : base(driver)
         {
@@ -25,7 +26,7 @@ namespace MaintenanceExam.PageObjects
         /// </summary>
         public void ProductsServices()
         {
-            Click(By.XPath("//a[text()='Products & Services']"));
+            Click(_productsAndServicesLocator);
         }
     }
 }

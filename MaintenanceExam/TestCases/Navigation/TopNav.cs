@@ -9,13 +9,12 @@ namespace MaintenanceExam.TestCases.Navigation
         [Category("Navigation")]
         public void TopNavCase()
         {
-            // Update the test case to incorporate the new requirements and pass.
-            // TODO: The top nav options have been updated.
-
             TopNavPanel topNavPanel = new TopNavPanel(Driver.Value!);
             topNavPanel.ProductsServices();
             string[] actualMenuItems = topNavPanel.GetSecondLevelMenuItems();
-            string[] expectedMenuItems = { "Checking & Savings", "Loans & Credit", "Account Services", "Insurance & Investments", "Business" };
+            // Update the test case to incorporate the new requirements and pass.
+            // DONE: The top nav options have been updated.
+            string[] expectedMenuItems = { "Checking & Savings", "Loans & Credit", "Home Loans", "Account Services", "Insurance", "Investments", "Business", "Schedule Appointment" };
             CollectionAssert.AreEqual(expectedMenuItems, actualMenuItems, "Verify second level of top nav menu");
         }
     }
