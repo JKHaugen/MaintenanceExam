@@ -8,6 +8,8 @@ namespace MaintenanceExam.PageObjects
         private readonly By _autoInterestLocator = By.XPath("//label[text()='Auto']");
         private readonly By _emailAddressLocator = By.Id("Email");
         private readonly By _firstNameLocator = By.Id("FirstName");
+        private readonly By _homeInterestLocator = By.XPath("//label[text()='Home']");
+        private readonly By _languagePreferenceLocator = By.Id("LanguagePreference");
         private readonly By _lastNameLocator = By.Id("LastName");
         private readonly By _otherInterestLocator = By.XPath("//label[text()='Other']");
         private readonly By _phoneNumberLocator = By.Id("PhoneNumber");
@@ -25,8 +27,9 @@ namespace MaintenanceExam.PageObjects
         /// Creates an insurance quote request.
         /// </summary>
         /// <param name="autoInterest">True if interested in an Auto quote, False otherwise.</param>
+        /// <param name="homeInterest">True if interested in an Home quote, False otherwise.</param>
         /// <param name="otherInterest">True if interested in an Other quote, False otherwise.</param>
-        public void CreateRequest(bool autoInterest, bool otherInterest)
+        public void CreateRequest(bool autoInterest, bool homeInterest, bool otherInterest)
         {
             string firstName = Utils.GenerateRandomString(6);
             string lastName = Utils.GenerateRandomString(8);
@@ -44,10 +47,15 @@ namespace MaintenanceExam.PageObjects
             {
                 Click(_autoInterestLocator);
             }
+            if (homeInterest)
+            {
+                Click(_homeInterestLocator);
+            }
             if (otherInterest)
             {
                 Click(_otherInterestLocator);
             }
+            SetDropdownByText(_languagePreferenceLocator, "English");
             Click(_submitLocator);
         }
     }
